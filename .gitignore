@@ -1,0 +1,46 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Dataset files
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Trained models
+models/*.pkl
+models/*.joblib
+models/*.onnx
+
+# MLflow artifacts
+mlruns/
+mlartifacts/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Node.js
+node_modules/
+dist/
+
+# Logs
+*.log
