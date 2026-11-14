@@ -1,3 +1,4 @@
+from unittest.mock import patch
 import pytest
 
 from fastapi.testclient import TestClient
@@ -8,11 +9,24 @@ from src.features.preprocessing import FEATURE_COLUMNS
 
 @pytest.fixture(scope="module")
 def client():
-    """Create an API test client with lifespan support."""
+    """Create an API client using a mocked ML predictor."""
 
-    with TestClient(app) as test_client:
-        yield test_client
+    class MockFraudPredictor:
+        def predict(self, transaction):
+            return {
+                "prediction": 0,
+                "is_fraud": False,
+                "risk_score": 0.15,
+                "threshold": 0.990795,
+                "model_name": "XGBoost",
+            }
 
+    with patch(
+        "backend.main.FraudPredictor",
+        return_value=MockFraudPredictor(),
+    ):
+        with TestClient(app) as test_client:
+            yield test_client
 
 @pytest.fixture
 def valid_transaction():
