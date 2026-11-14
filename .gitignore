@@ -53,3 +53,6 @@ mlflow.db-wal
 # MLflow artifacts
 mlruns/
 mlartifacts/
+
+# Generated machine learning models and artifacts
+/models/
