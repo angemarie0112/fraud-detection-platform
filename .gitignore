@@ -44,3 +44,12 @@ dist/
 
 # Logs
 *.log
+
+# MLflow database
+mlflow.db
+mlflow.db-shm
+mlflow.db-wal
+
+# MLflow artifacts
+mlruns/
+mlartifacts/
